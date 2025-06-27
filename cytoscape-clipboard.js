@@ -92,7 +92,7 @@
                     var jsonFirst = jsons[i];
                     
                     if (!cuted) {
-                        var id = getCloneId(jsonFirst.group);
+                        var id = getCloneId(jsonFirst);
                         oldIdToNewId[jsonFirst.data.id] = id;
                         jsonFirst.data.id = id;
                     } else {
