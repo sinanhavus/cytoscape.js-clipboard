@@ -79,10 +79,10 @@
                 return last ? "item_" + counter : "item_" + (++counter);
             }
 
-            function getCloneId() {
-                return guid();
+            // returns a unique id for a cloned node or edge based on its group type
+            function getCloneId(jsonFirst) {
+                return jsonFirst.group === "nodes" ? getNodeId() : getEdgeId();
             }
-
 
             var oldIdToNewId = {};
 
@@ -90,10 +90,9 @@
                 jsons = $.extend(true, [], jsons);
                 for (var i = 0; i < jsons.length; i++) {
                     var jsonFirst = jsons[i];
-                    console.log("clipboard extension json=", jsonFirst);
-
+                    
                     if (!cuted) {
-                        var id = getCloneId();
+                        var id = getCloneId(jsonFirst.group);
                         oldIdToNewId[jsonFirst.data.id] = id;
                         jsonFirst.data.id = id;
                     } else {
