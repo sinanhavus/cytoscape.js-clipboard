@@ -65,6 +65,15 @@
                     s4() + '-' + s4() + s4() + s4();
             }
 
+            // returns node id
+            function getNodeId() {
+                return "nwtN_" + guid();
+            }
+
+            // returns edge id
+            function getEdgeId() {
+                return "nwtE_" + guid();
+            }
 
             function getItemId(last) {
                 return last ? "item_" + counter : "item_" + (++counter);
@@ -81,6 +90,7 @@
                 jsons = $.extend(true, [], jsons);
                 for (var i = 0; i < jsons.length; i++) {
                     var jsonFirst = jsons[i];
+                    console.log("clipboard extension json=", jsonFirst);
 
                     if (!cuted) {
                         var id = getCloneId();
