@@ -37,8 +37,8 @@
                 afterCut: null,
                 beforePaste: null,
                 afterPaste: null,
-                nodePrefix: null,
-                edgePrefix: null
+                nodePrefix: undefined,
+                edgePrefix: undefined
             };
 
             $.extend(true, options, opts);
