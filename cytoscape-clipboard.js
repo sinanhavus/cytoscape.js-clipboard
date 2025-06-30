@@ -36,7 +36,9 @@
                 beforeCut: null,
                 afterCut: null,
                 beforePaste: null,
-                afterPaste: null
+                afterPaste: null,
+                nodePrefix: null,
+                edgePrefix: null
             };
 
             $.extend(true, options, opts);
@@ -67,12 +69,12 @@
 
             // returns node id
             function getNodeId() {
-                return "nwtN_" + guid();
+                return options.nodePrefix ?  options.nodePrefix + guid() : guid();
             }
 
             // returns edge id
             function getEdgeId() {
-                return "nwtE_" + guid();
+                return options.edgePrefix ?  options.edgePrefix + guid() : guid();
             }
 
             function getItemId(last) {
@@ -80,8 +82,8 @@
             }
 
             // returns a unique id for a cloned node or edge based on its group type
-            function getCloneId(jsonFirst) {
-                return jsonFirst.group === "nodes" ? getNodeId() : getEdgeId();
+            function getCloneId(elementType) {
+                return elementType === "nodes" ? getNodeId() : getEdgeId();
             }
 
             var oldIdToNewId = {};
@@ -92,7 +94,7 @@
                     var jsonFirst = jsons[i];
                     
                     if (!cuted) {
-                        var id = getCloneId(jsonFirst);
+                        var id = getCloneId(jsonFirst.group);
                         oldIdToNewId[jsonFirst.data.id] = id;
                         jsonFirst.data.id = id;
                     } else {
