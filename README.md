@@ -60,7 +60,7 @@ Pastes the copied elements which has `id`. If `id` is not specified, it will hav
                 beforePaste: function(clipboard) {},
                 // Function executed on the collection of pasted elements, after they
                 // are pasted.
-                afterPaste: function(eles) {}
+                afterPaste: function(eles) {},
                 // Optional prefix to add to the IDs of pasted nodes (string).
                 // If not provided, node IDs will be generated without a prefix.
                 nodePrefix: "",
